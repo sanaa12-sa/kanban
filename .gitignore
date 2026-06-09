@@ -1,0 +1,20 @@
+# Java / Maven
+kanban-server/target/
+kanban-server/*.class
+kanban-server/logs/
+
+# IntelliJ
+kanban-server/.idea/
+kanban-client/.idea/
+**/*.iml
+
+# JavaFX client
+kanban-client/target/
+
+# Docker volumes
+mysql_data/
+grafana_data/
+
+# OS
+.DS_Store
+Thumbs.db
