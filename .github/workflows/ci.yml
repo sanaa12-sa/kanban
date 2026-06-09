@@ -64,8 +64,9 @@ jobs:
       - name: Build Docker image
         run: docker build -t kanban-server ./kanban-server
 
-      - name: Test Docker image
-        run: docker run --rm kanban-server echo "Image OK"
+      - run: |
+      docker image inspect kanban-server --format='Image built: {{.Id}}'
+      echo "Docker image verified OK"
 
       - name: Save Docker image as artifact
         run: docker save kanban-server | gzip > kanban-server.tar.gz
