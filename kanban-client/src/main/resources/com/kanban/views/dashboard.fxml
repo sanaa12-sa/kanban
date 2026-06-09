@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.DashboardController"
+      style="-fx-background-color: #F7F4EF;"
+      prefWidth="1200" prefHeight="700">
+
+    <VBox styleClass="sidebar" spacing="0">
+
+        <HBox styleClass="sidebar-logo" alignment="CENTER_LEFT" spacing="10">
+            <Label text="▦" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20px;"/>
+            <VBox spacing="1">
+                <Label text="Kanban App" styleClass="sidebar-logo-text"/>
+                <Label text="Gestion de projets"
+                       style="-fx-text-fill: #8BA5C0; -fx-font-size: 10px;"/>
+            </VBox>
+        </HBox>
+
+        <VBox style="-fx-padding: 16 20; -fx-background-color: #1B3A5C;" spacing="6">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label fx:id="avatarLabel" text="U" styleClass="avatar"/>
+                <VBox spacing="2">
+                    <Label fx:id="userNameLabel" text="Utilisateur"
+                           style="-fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <Label fx:id="userEmailLabel" text="email@exemple.com"
+                           style="-fx-text-fill: #8BA5C0; -fx-font-size: 10px;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <Separator style="-fx-background-color: #1F3F5E;"/>
+        <Label text="NAVIGATION" styleClass="sidebar-section"/>
+
+        <Button text="🏠  Mes Boards" styleClass="sidebar-item sidebar-item-active"
+                onAction="#handleShowBoards" maxWidth="Infinity"/>
+        <Button text="📋  Toutes les tâches" styleClass="sidebar-item"
+                onAction="#handleAllTasks" maxWidth="Infinity"/>
+        <Button text="🔔  Notifications" styleClass="sidebar-item"
+                onAction="#handleNotifications" maxWidth="Infinity"/>
+
+        <Label text="COMPTE" styleClass="sidebar-section"/>
+        <Button text="👤  Mon profil" styleClass="sidebar-item"
+                onAction="#handleProfile" maxWidth="Infinity"/>
+        <Button text="⚙️  Paramètres" styleClass="sidebar-item"
+                onAction="#handleSettings" maxWidth="Infinity"/>
+
+        <Region VBox.vgrow="ALWAYS"/>
+        <Separator style="-fx-background-color: #1F3F5E;"/>
+
+        <Button text="⬅  Déconnexion" styleClass="sidebar-item"
+                onAction="#handleLogout" maxWidth="Infinity"
+                style="-fx-text-fill: #E8A0A0; -fx-background-color: transparent;
+                       -fx-padding: 12 24; -fx-cursor: hand;
+                       -fx-alignment: CENTER_LEFT; -fx-max-width: Infinity;"/>
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: #F7F4EF;">
+
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="16">
+            <VBox spacing="2">
+                <Label fx:id="pageTitle"
+                       text="Mes Boards"
+                       style="-fx-text-fill: #1B3A5C; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Label fx:id="pageSubtitle"
+                       text="Gérez et organisez vos projets"
+                       style="-fx-text-fill: #6B6B80; -fx-font-size: 11px;"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField"
+                       promptText="🔍 Rechercher un board..."
+                       styleClass="search-field" prefWidth="240"/>
+            <Button text="＋  Nouveau board"
+                    onAction="#handleNewBoard" styleClass="btn-primary"/>
+        </HBox>
+
+        <VBox VBox.vgrow="ALWAYS" style="-fx-padding: 28;">
+
+            <HBox spacing="16" style="-fx-padding: 0 0 24 0;">
+                <VBox spacing="4" alignment="CENTER_LEFT"
+                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;
+                             -fx-padding: 16 20; -fx-border-color: #E8E2D9;
+                             -fx-border-radius: 10; -fx-border-width: 1;" prefWidth="160">
+                    <Label fx:id="totalBoardsLabel" text="0"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                    <Label text="Boards actifs"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6B6B80;"/>
+                </VBox>
+                <VBox spacing="4" alignment="CENTER_LEFT"
+                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;
+                             -fx-padding: 16 20; -fx-border-color: #E8E2D9;
+                             -fx-border-radius: 10; -fx-border-width: 1;" prefWidth="160">
+                    <Label fx:id="totalTasksLabel" text="0"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #7B2D42;"/>
+                    <Label text="Tâches en cours"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6B6B80;"/>
+                </VBox>
+                <VBox spacing="4" alignment="CENTER_LEFT"
+                      style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;
+                             -fx-padding: 16 20; -fx-border-color: #E8E2D9;
+                             -fx-border-radius: 10; -fx-border-width: 1;" prefWidth="160">
+                    <Label fx:id="membersLabel" text="0"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1a7a4a;"/>
+                    <Label text="Collaborateurs"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6B6B80;"/>
+                </VBox>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 14 0;">
+                <Label text="Tous les boards"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+            </HBox>
+
+            <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true"
+                        style="-fx-background-color: transparent; -fx-background: transparent;
+                               -fx-border-color: transparent;">
+                <FlowPane fx:id="boardsContainer" hgap="20" vgap="20"
+                          style="-fx-background-color: transparent; -fx-padding: 2;"/>
+            </ScrollPane>
+        </VBox>
+    </VBox>
+</HBox>

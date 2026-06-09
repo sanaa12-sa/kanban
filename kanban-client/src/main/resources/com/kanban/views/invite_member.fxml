@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.InviteMemberController"
+      spacing="16"
+      style="-fx-background-color: #1e1e2e; -fx-padding: 28px;"
+      prefWidth="500" prefHeight="450">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="👥" style="-fx-font-size: 20px;"/>
+        <Label text="Inviter un membre"
+               style="-fx-text-fill: #cba6f7; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <Separator style="-fx-background-color: #313244;"/>
+
+    <!-- Champ email -->
+    <VBox spacing="6">
+        <Label text="Email du membre à inviter"
+               style="-fx-text-fill: #a6adc8; -fx-font-size: 13px;"/>
+        <HBox spacing="10">
+            <TextField fx:id="emailField"
+                       promptText="exemple@email.com"
+                       HBox.hgrow="ALWAYS"
+                       style="-fx-background-color: #313244;
+                              -fx-text-fill: #cdd6f4;
+                              -fx-border-color: #45475a;
+                              -fx-border-radius: 8px;
+                              -fx-background-radius: 8px;
+                              -fx-padding: 10px;"/>
+            <Button fx:id="inviteBtn" text="Inviter" onAction="#handleInvite"
+                    style="-fx-background-color: #89b4fa;
+                           -fx-text-fill: #1e1e2e;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 8px;
+                           -fx-padding: 10px 18px;
+                           -fx-cursor: hand;
+                           -fx-min-width: 80px;"/>
+        </HBox>
+    </VBox>
+
+    <!-- Messages -->
+    <Label fx:id="errorLabel" text=""
+           style="-fx-text-fill: #f38ba8; -fx-font-size: 12px;"
+           wrapText="true"/>
+    <Label fx:id="successLabel" text=""
+           style="-fx-text-fill: #a6e3a1; -fx-font-size: 12px;"
+           wrapText="true"/>
+
+    <Separator style="-fx-background-color: #313244;"/>
+
+    <!-- Liste des membres actuels -->
+    <Label text="Membres du board"
+           style="-fx-text-fill: #a6adc8; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+
+    <ScrollPane fitToWidth="true"
+                prefHeight="200"
+                style="-fx-background: #181825;
+                       -fx-background-color: #181825;
+                       -fx-border-color: #313244;
+                       -fx-border-radius: 8px;">
+        <VBox fx:id="membersBox"
+              spacing="8"
+              style="-fx-padding: 10px; -fx-background-color: #181825;"/>
+    </ScrollPane>
+
+    <!-- Bouton fermer -->
+    <HBox alignment="CENTER_RIGHT">
+        <Button text="Fermer" onAction="#handleClose"
+                style="-fx-background-color: #45475a;
+                       -fx-text-fill: #cdd6f4;
+                       -fx-background-radius: 8px;
+                       -fx-padding: 10px 24px;
+                       -fx-cursor: hand;"/>
+    </HBox>
+
+</VBox>

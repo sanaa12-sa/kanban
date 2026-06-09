@@ -1,0 +1,28 @@
+.root {
+    -fx-background-color: #1E1E1E;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.text-field,
+.password-field,
+.text-area,
+.combo-box {
+    -fx-background-color: #2D2D2D;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-color: #3A3A3A;
+    -fx-text-fill: white;
+}
+
+.scroll-pane {
+    -fx-background: #1E1E1E;
+}
+
+.table-view {
+    -fx-background-color: #2D2D2D;
+}

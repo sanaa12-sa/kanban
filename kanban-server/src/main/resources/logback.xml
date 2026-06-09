@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- APPENDER : Console (affichage dans le terminal)           -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- APPENDER : Fichier rotatif (sauvegarde dans /logs)        -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/kanban.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Nouveau fichier chaque jour -->
+            <fileNamePattern>logs/kanban.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Garder 30 jours d'historique -->
+            <maxHistory>30</maxHistory>
+            <!-- Taille maximale totale -->
+            <totalSizeCap>500MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- LOGGERS SPÉCIFIQUES                                        -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+
+    <!-- Réduire le bruit Hibernate -->
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="com.zaxxer.hikari" level="WARN"/>
+
+    <!-- Logs applicatifs détaillés -->
+    <logger name="com.kanban.service" level="DEBUG"/>
+    <logger name="com.kanban.server" level="INFO"/>
+    <logger name="com.kanban.email" level="INFO"/>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- ROOT LOGGER                                                -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

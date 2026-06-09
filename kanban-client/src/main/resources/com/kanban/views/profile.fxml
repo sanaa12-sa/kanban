@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.ProfileController"
+      spacing="0"
+      style="-fx-background-color: #F7F4EF;"
+      prefWidth="500" prefHeight="520">
+
+    <!-- Header bleu marine -->
+    <VBox alignment="CENTER" spacing="10"
+          style="-fx-background-color: #152D47; -fx-padding: 30 20;">
+        <!-- Avatar grand -->
+        <Label fx:id="avatarBigLabel" text="U"
+               style="-fx-background-color: #2C5F8A;
+                      -fx-text-fill: #FFFFFF;
+                      -fx-font-size: 28px;
+                      -fx-font-weight: bold;
+                      -fx-background-radius: 50%;
+                      -fx-min-width: 70px; -fx-min-height: 70px;
+                      -fx-max-width: 70px; -fx-max-height: 70px;
+                      -fx-alignment: center;"/>
+        <Label fx:id="profileNameLabel" text="Utilisateur"
+               style="-fx-text-fill: #FFFFFF; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <Label fx:id="profileEmailLabel" text="email@exemple.com"
+               style="-fx-text-fill: #8BA5C0; -fx-font-size: 12px;"/>
+    </VBox>
+
+    <!-- Formulaire -->
+    <VBox spacing="16" style="-fx-padding: 28 36;">
+
+        <Label text="Modifier mon profil"
+               style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+
+        <Separator/>
+
+        <!-- Nom complet -->
+        <VBox spacing="5">
+            <Label text="Nom complet"
+                   style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+            <TextField fx:id="fullNameField"
+                       promptText="Votre nom complet"
+                       maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- Email (lecture seule) -->
+        <VBox spacing="5">
+            <Label text="Adresse email (non modifiable)"
+                   style="-fx-text-fill: #6B6B80; -fx-font-size: 12px;"/>
+            <TextField fx:id="emailField"
+                       promptText="Votre email"
+                       maxWidth="Infinity"
+                       editable="false"
+                       style="-fx-background-color: #EEE9E1;
+                              -fx-text-fill: #6B6B80;
+                              -fx-border-color: #E8E2D9;
+                              -fx-border-radius: 8px;
+                              -fx-background-radius: 8px;
+                              -fx-padding: 10px 14px;"/>
+        </VBox>
+
+        <!-- Nouveau mot de passe (optionnel) -->
+        <VBox spacing="5">
+            <Label text="Nouveau mot de passe (laisser vide pour ne pas changer)"
+                   style="-fx-text-fill: #6B6B80; -fx-font-size: 12px;"/>
+            <PasswordField fx:id="passwordField"
+                           promptText="Nouveau mot de passe (optionnel)"
+                           maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- Message -->
+        <Label fx:id="messageLabel" text=""
+               style="-fx-font-size: 12px; -fx-wrap-text: true;"/>
+
+        <!-- Boutons -->
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Annuler" onAction="#handleCancel"
+                    style="-fx-background-color: #E8E2D9;
+                           -fx-text-fill: #1A1A2E;
+                           -fx-background-radius: 8px;
+                           -fx-padding: 10px 20px;
+                           -fx-cursor: hand;"/>
+            <Button text="💾 Enregistrer" onAction="#handleSave"
+                    style="-fx-background-color: #1B3A5C;
+                           -fx-text-fill: #FFFFFF;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 8px;
+                           -fx-padding: 10px 20px;
+                           -fx-cursor: hand;"/>
+        </HBox>
+    </VBox>
+
+</VBox>

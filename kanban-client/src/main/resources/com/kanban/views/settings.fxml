@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.SettingsController"
+      styleClass="settings-root"
+      prefWidth="480" prefHeight="620" spacing="0">
+
+    <!-- Header -->
+    <HBox styleClass="settings-header"
+          alignment="CENTER_LEFT" spacing="12"
+          style="-fx-padding: 20 24;">
+        <Label text="⚙️" style="-fx-text-fill: white; -fx-font-size: 20px;"/>
+        <VBox spacing="2">
+            <Label text="Paramètres"
+                   style="-fx-text-fill: #FFFFFF; -fx-font-size: 17px; -fx-font-weight: bold;"/>
+            <Label text="Personnalisez votre expérience"
+                   style="-fx-text-fill: #8BA5C0; -fx-font-size: 11px;"/>
+        </VBox>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                style="-fx-background-color: transparent; -fx-background: transparent;
+                       -fx-border-color: transparent;">
+        <VBox style="-fx-padding: 24;" spacing="18">
+
+            <!-- Apparence -->
+            <VBox spacing="12"
+                  styleClass="settings-card"
+                  style="-fx-padding: 18;">
+                <Label text="🎨  Apparence"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                <Separator/>
+                <Label text="Thème de l'application"
+                       style="-fx-font-size: 11px; -fx-text-fill: #4A4A6A; -fx-font-weight: bold;"/>
+                <HBox spacing="20">
+                    <fx:define>
+                        <ToggleGroup fx:id="themeGroup"/>
+                    </fx:define>
+                    <RadioButton fx:id="themeLight" text="☀️  Clair (Beige)"
+                                 toggleGroup="$themeGroup"
+                                 style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px;"/>
+                    <RadioButton fx:id="themeDark"  text="🌙  Sombre"
+                                 toggleGroup="$themeGroup"
+                                 style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Tri des boards -->
+            <VBox spacing="12"
+                  style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;
+                         -fx-padding: 18; -fx-border-color: #E8E2D9;
+                         -fx-border-radius: 10; -fx-border-width: 1;">
+                <Label text="📋  Tri des boards"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                <Separator/>
+                <Label text="Trier les boards par :"
+                       style="-fx-font-size: 11px; -fx-text-fill: #4A4A6A; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="boardSortBox" maxWidth="Infinity"
+                          style="-fx-font-size: 12px; -fx-background-radius: 8;"/>
+            </VBox>
+
+            <!-- Notifications -->
+            <VBox spacing="12"
+                  style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;
+                         -fx-padding: 18; -fx-border-color: #E8E2D9;
+                         -fx-border-radius: 10; -fx-border-width: 1;">
+                <Label text="🔔  Notifications"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                <Separator/>
+                <CheckBox fx:id="notifEmail"
+                          text="📧  Recevoir les notifications par email"
+                          style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px;"/>
+                <CheckBox fx:id="notifDeadline"
+                          text="⏰  Rappels de deadline"
+                          style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px;"/>
+                <CheckBox fx:id="notifInvite"
+                          text="👥  Notifications d'invitation"
+                          style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px;"/>
+                <Label text="Délai de rappel avant deadline :"
+                       style="-fx-font-size: 11px; -fx-text-fill: #4A4A6A; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="deadlineReminderBox" maxWidth="Infinity"
+                          style="-fx-font-size: 12px; -fx-background-radius: 8;"/>
+            </VBox>
+
+            <!-- À propos -->
+            <VBox spacing="8"
+                  styleClass="settings-card"
+                  style="-fx-padding: 18;">
+                <Label text="ℹ️  À propos de l'application"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                <Separator/>
+                <Label text="Kanban App — Version 1.0"
+                       style="-fx-font-size: 12px; -fx-text-fill: #4A4A6A;"/>
+                <Label text="© 2026 "
+                       style="-fx-font-size: 11px; -fx-text-fill: #aaa;"/>
+            </VBox>
+
+            <Label fx:id="savedLabel" text=""
+                   style="-fx-font-size: 12px;"/>
+
+            <!-- Boutons -->
+            <HBox spacing="12">
+                <Button text="💾  Sauvegarder" onAction="#handleSave"
+                        HBox.hgrow="ALWAYS" maxWidth="Infinity"
+                        style="-fx-background-color: #1B3A5C; -fx-text-fill: white;
+                               -fx-font-weight: bold; -fx-padding: 10 0;
+                               -fx-background-radius: 8; -fx-cursor: hand;"/>
+                <Button text="Fermer" onAction="#handleClose"
+                        HBox.hgrow="ALWAYS" maxWidth="Infinity"
+                        style="-fx-background-color: transparent; -fx-text-fill: #1B3A5C;
+                               -fx-border-color: #1B3A5C; -fx-border-radius: 8;
+                               -fx-background-radius: 8; -fx-padding: 10 0;
+                               -fx-cursor: hand;"/>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

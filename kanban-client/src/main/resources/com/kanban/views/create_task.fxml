@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.CreateTaskController"
+      style="-fx-padding: 30; -fx-background-color: #1e1e2e;">
+
+    <Label text="Nouvelle Tâche" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #cdd6f4;"/>
+
+    <TextField fx:id="titleField" promptText="Titre de la tâche"/>
+    <TextArea fx:id="descriptionField" promptText="Description" prefRowCount="3"/>
+    <ComboBox fx:id="priorityBox" maxWidth="Infinity"/>
+    <TextField fx:id="deadlineField" promptText="Deadline (2026-06-01)"/>
+    <TextField fx:id="assignedToField" promptText="ID utilisateur assigné (optionnel)"/>
+
+    <Label fx:id="errorLabel" styleClass="label-error"/>
+
+    <HBox spacing="10">
+        <Button text="Créer" onAction="#handleCreate" styleClass="btn-primary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button text="Annuler" onAction="#handleCancel" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+    </HBox>
+</VBox>

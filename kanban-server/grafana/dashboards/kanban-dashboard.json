@@ -1,0 +1,57 @@
+{
+  "title": "Kanban App Dashboard",
+  "uid": "kanban-main",
+  "version": 1,
+  "panels": [
+    {
+      "id": 1,
+      "title": "Statut des containers",
+      "type": "stat",
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "up",
+          "legendFormat": "{{job}}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "CPU Usage",
+      "type": "graph",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 },
+      "targets": [
+        {
+          "expr": "rate(process_cpu_seconds_total[1m]) * 100",
+          "legendFormat": "CPU %"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Memoire utilisee (MB)",
+      "type": "graph",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 },
+      "targets": [
+        {
+          "expr": "process_resident_memory_bytes / 1024 / 1024",
+          "legendFormat": "RAM MB"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Requetes par seconde",
+      "type": "graph",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 12 },
+      "targets": [
+        {
+          "expr": "rate(http_requests_total[1m])",
+          "legendFormat": "req/s"
+        }
+      ]
+    }
+  ],
+  "time": { "from": "now-1h", "to": "now" },
+  "refresh": "30s"
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.KanbanController"
+      style="-fx-background-color: #F7F4EF;"
+      prefWidth="1200" prefHeight="700">
+
+    <VBox styleClass="sidebar" spacing="0">
+
+        <HBox styleClass="sidebar-logo" alignment="CENTER_LEFT" spacing="10">
+            <Label text="▦" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20px;"/>
+            <Label text="Kanban App" styleClass="sidebar-logo-text"/>
+        </HBox>
+
+        <VBox style="-fx-padding: 14 20; -fx-background-color: #1B3A5C;" spacing="2">
+            <Label text="BOARD ACTUEL"
+                   style="-fx-text-fill: #8BA5C0; -fx-font-size: 9px; -fx-font-weight: bold;"/>
+            <Label fx:id="boardTitleLabel" text="—"
+                   style="-fx-text-fill: #FFFFFF; -fx-font-size: 14px; -fx-font-weight: bold;
+                          -fx-wrap-text: true;" maxWidth="180"/>
+        </VBox>
+
+        <Separator style="-fx-background-color: #1F3F5E;"/>
+
+        <Label text="ACTIONS" styleClass="sidebar-section"/>
+
+        <Button text="👥  Inviter un membre"
+                onAction="#handleInviteMember"
+                styleClass="sidebar-item"
+                maxWidth="Infinity"/>
+        <Button text="🔍  Rechercher tâche"
+                onAction="#handleSearchTask"
+                styleClass="sidebar-item"
+                maxWidth="Infinity"/>
+
+        <Label text="COLONNES" styleClass="sidebar-section"/>
+        <Button fx:id="colBtn0" text="📋  À faire"
+                onAction="#handleScrollToColumn"
+                styleClass="sidebar-item" maxWidth="Infinity"/>
+        <Button fx:id="colBtn1" text="⚙️  En cours"
+                onAction="#handleScrollToColumn"
+                styleClass="sidebar-item" maxWidth="Infinity"/>
+        <Button fx:id="colBtn2" text="👁  En révision"
+                onAction="#handleScrollToColumn"
+                styleClass="sidebar-item" maxWidth="Infinity"/>
+        <Button fx:id="colBtn3" text="✅  Terminé"
+                onAction="#handleScrollToColumn"
+                styleClass="sidebar-item" maxWidth="Infinity"/>
+
+        <Region VBox.vgrow="ALWAYS"/>
+        <Separator style="-fx-background-color: #1F3F5E;"/>
+
+        <Button text="⬅  Retour aux boards"
+                onAction="#handleBack"
+                maxWidth="Infinity"
+                style="-fx-background-color: transparent; -fx-text-fill: #8BA5C0;
+                       -fx-padding: 14 24; -fx-cursor: hand;
+                       -fx-alignment: CENTER_LEFT; -fx-max-width: Infinity;"/>
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: #F7F4EF;">
+
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="16">
+            <VBox spacing="2">
+                <Label fx:id="boardTitleTopLabel" text="Board"
+                       style="-fx-text-fill: #1B3A5C; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Label text="Vue Kanban"
+                       style="-fx-text-fill: #6B6B80; -fx-font-size: 11px;"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="👥  Inviter" onAction="#handleInviteMember"
+                    style="-fx-background-color: transparent; -fx-text-fill: #1B3A5C;
+                           -fx-border-color: #1B3A5C; -fx-border-radius: 8;
+                           -fx-background-radius: 8; -fx-font-size: 12px;
+                           -fx-padding: 8 16; -fx-cursor: hand;"/>
+            <Button text="⬅  Retour" onAction="#handleBack"
+                    styleClass="btn-secondary" style="-fx-padding: 8 16;"/>
+        </HBox>
+
+        <ScrollPane fx:id="columnsScrollPane"
+                    fitToHeight="true" fitToWidth="false"
+                    VBox.vgrow="ALWAYS"
+                    style="-fx-background: #F7F4EF; -fx-background-color: #F7F4EF;
+                           -fx-border-color: transparent;">
+            <HBox fx:id="columnsContainer" spacing="16"
+                  style="-fx-padding: 24; -fx-background-color: #F7F4EF;"/>
+        </ScrollPane>
+
+    </VBox>
+</HBox>

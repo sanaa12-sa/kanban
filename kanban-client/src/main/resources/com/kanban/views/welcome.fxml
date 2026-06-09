@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.WelcomeController"
+      prefWidth="1100" prefHeight="750"
+      style="-fx-background-color: #F7F4EF;">
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- NAVBAR                                                   -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <HBox alignment="CENTER_LEFT" spacing="0"
+          style="-fx-background-color: #FFFFFF;
+                 -fx-border-color: #E8E2D9;
+                 -fx-border-width: 0 0 1 0;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 2);">
+
+        <!-- Logo -->
+        <HBox alignment="CENTER" spacing="10"
+              style="-fx-background-color: #152D47;
+                     -fx-padding: 16 28;
+                     -fx-min-width: 220px;">
+            <Label text="▦" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20px;"/>
+            <Label text="Kanban App"
+                   style="-fx-text-fill: #FFFFFF;
+                          -fx-font-size: 17px;
+                          -fx-font-weight: bold;"/>
+        </HBox>
+
+        <!-- Nav links -->
+        <HBox alignment="CENTER_LEFT" spacing="4"
+              style="-fx-padding: 0 20;" HBox.hgrow="ALWAYS">
+            <Button text="Accueil"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #1B3A5C;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: bold;
+                           -fx-padding: 16 18;
+                           -fx-cursor: hand;
+                           -fx-border-color: transparent transparent #1B3A5C transparent;
+                           -fx-border-width: 0 0 2 0;
+                           -fx-background-radius: 0;"/>
+            <Button text="Fonctionnalités"
+                    onAction="#handleScrollToFeatures"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #6B6B80;
+                           -fx-font-size: 13px;
+                           -fx-padding: 16 18;
+                           -fx-cursor: hand;
+                           -fx-background-radius: 0;"/>
+            <Button text="À propos"
+                    onAction="#handleScrollToAbout"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #6B6B80;
+                           -fx-font-size: 13px;
+                           -fx-padding: 16 18;
+                           -fx-cursor: hand;
+                           -fx-background-radius: 0;"/>
+        </HBox>
+
+        <!-- Boutons auth -->
+        <HBox spacing="10" style="-fx-padding: 0 28;">
+            <Button text="Connexion"
+                    onAction="#handleLogin"
+                    style="-fx-background-color: transparent;
+                           -fx-text-fill: #1B3A5C;
+                           -fx-border-color: #1B3A5C;
+                           -fx-border-radius: 8;
+                           -fx-background-radius: 8;
+                           -fx-font-size: 13px;
+                           -fx-font-weight: bold;
+                           -fx-padding: 9 22;
+                           -fx-cursor: hand;"/>
+            <Button text="Créer un compte"
+                    onAction="#handleRegister"
+                    style="-fx-background-color: #1B3A5C;
+                           -fx-text-fill: #FFFFFF;
+                           -fx-font-weight: bold;
+                           -fx-font-size: 13px;
+                           -fx-padding: 9 22;
+                           -fx-background-radius: 8;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(27,58,92,0.3), 6, 0, 0, 2);"/>
+        </HBox>
+    </HBox>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- CONTENU SCROLLABLE                                       -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <ScrollPane fx:id="mainScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS"
+                style="-fx-background: #F7F4EF;
+                       -fx-background-color: #F7F4EF;
+                       -fx-border-color: transparent;">
+
+        <VBox style="-fx-background-color: #F7F4EF;">
+
+            <!-- ── HERO ─────────────────────────────────────── -->
+            <HBox style="-fx-background-color: #F7F4EF; -fx-padding: 60 80 50 80;"
+                  spacing="60" alignment="CENTER">
+
+                <!-- Texte gauche -->
+                <VBox spacing="20" HBox.hgrow="ALWAYS">
+
+                    <!-- Badge accrocheur — sans jargon -->
+                    <HBox>
+                        <Label text="✦  Simple, rapide et collaboratif"
+                               style="-fx-background-color: #EBF0F6;
+                                      -fx-text-fill: #1B3A5C;
+                                      -fx-font-size: 11px;
+                                      -fx-font-weight: bold;
+                                      -fx-padding: 5 12;
+                                      -fx-background-radius: 20;
+                                      -fx-border-color: #C8D8E8;
+                                      -fx-border-radius: 20;
+                                      -fx-border-width: 1;"/>
+                    </HBox>
+
+                    <!-- Titre principal -->
+                    <VBox spacing="2">
+                        <Label text="De l'idée à la livraison"
+                               style="-fx-font-size: 38px;
+                                      -fx-font-weight: bold;
+                                      -fx-text-fill: #1A1A2E;"/>
+                        <Label text="en toute fluidité."
+                               style="-fx-font-size: 38px;
+                                      -fx-font-weight: bold;
+                                      -fx-text-fill: #1B3A5C;"/>
+                    </VBox>
+
+                    <!-- Description attirante et accessible -->
+                    <Label text="Kanban App vous aide à organiser votre travail, suivre l'avancement de vos projets et collaborer avec votre équipe — le tout en un seul endroit, en temps réel, sans complexité."
+                           style="-fx-font-size: 14px;
+                                  -fx-text-fill: #6B6B80;
+                                  -fx-wrap-text: true;
+                                  -fx-line-spacing: 4;"
+                           maxWidth="480"/>
+
+                    <!-- Boutons CTA -->
+                    <HBox spacing="12" style="-fx-padding: 8 0 0 0;">
+                        <Button text="Commencer gratuitement →"
+                                onAction="#handleRegister"
+                                style="-fx-background-color: #1B3A5C;
+                                       -fx-text-fill: #FFFFFF;
+                                       -fx-font-weight: bold;
+                                       -fx-font-size: 14px;
+                                       -fx-padding: 13 28;
+                                       -fx-background-radius: 9;
+                                       -fx-cursor: hand;
+                                       -fx-effect: dropshadow(gaussian, rgba(27,58,92,0.3), 8, 0, 0, 3);"/>
+                        <Button text="Se connecter"
+                                onAction="#handleLogin"
+                                style="-fx-background-color: transparent;
+                                       -fx-text-fill: #1B3A5C;
+                                       -fx-border-color: #1B3A5C;
+                                       -fx-border-radius: 9;
+                                       -fx-background-radius: 9;
+                                       -fx-font-size: 14px;
+                                       -fx-font-weight: bold;
+                                       -fx-padding: 13 28;
+                                       -fx-cursor: hand;"/>
+                    </HBox>
+
+                    <!-- Stats compréhensibles par tous -->
+                    <HBox spacing="32" style="-fx-padding: 12 0 0 0;">
+                        <VBox spacing="2">
+                            <Label text="∞"
+                                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                            <Label text="Projets illimités"
+                                   style="-fx-font-size: 11px; -fx-text-fill: #6B6B80;"/>
+                        </VBox>
+                        <VBox spacing="2">
+                            <Label text="👥"
+                                   style="-fx-font-size: 20px;"/>
+                            <Label text="Travail en équipe"
+                                   style="-fx-font-size: 11px; -fx-text-fill: #6B6B80;"/>
+                        </VBox>
+                        <VBox spacing="2">
+                            <Label text="⚡"
+                                   style="-fx-font-size: 20px;"/>
+                            <Label text="Mises à jour instantanées"
+                                   style="-fx-font-size: 11px; -fx-text-fill: #6B6B80;"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Aperçu visuel de l'application -->
+                <VBox spacing="10" alignment="TOP_LEFT"
+                      style="-fx-background-color: #EEE9E1;
+                             -fx-background-radius: 14;
+                             -fx-padding: 20;
+                             -fx-min-width: 300px;
+                             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 12, 0, 0, 4);">
+
+                    <!-- Titre plus parlant -->
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="📋"  style="-fx-font-size: 14px;"/>
+                        <Label text="Aperçu — Projet Marketing 2026"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                    </HBox>
+
+                    <!-- Tâche urgente -->
+                    <VBox style="-fx-background-color: #FFFFFF;
+                                 -fx-background-radius: 8;
+                                 -fx-padding: 10;
+                                 -fx-border-color: #FAE8EC;
+                                 -fx-border-width: 0 0 0 3;
+                                 -fx-border-radius: 2;"
+                          spacing="4">
+                        <Label text="🔴  Urgent"
+                               style="-fx-background-color: #FAE8EC;
+                                      -fx-text-fill: #7B2D42;
+                                      -fx-font-size: 9px;
+                                      -fx-font-weight: bold;
+                                      -fx-padding: 2 8;
+                                      -fx-background-radius: 20;"/>
+                        <Label text="Préparer la présentation client"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1A1A2E;"/>
+                        <Label text="📅 Demain  👤 Assigné à sanaa"
+                               style="-fx-font-size: 10px; -fx-text-fill: #6B6B80;"/>
+                    </VBox>
+
+                    <!-- Tâche en cours -->
+                    <VBox style="-fx-background-color: #FFFFFF;
+                                 -fx-background-radius: 8;
+                                 -fx-padding: 10;
+                                 -fx-border-color: #FEF4E6;
+                                 -fx-border-width: 0 0 0 3;
+                                 -fx-border-radius: 2;"
+                          spacing="4">
+                        <Label text="🟡  En cours"
+                               style="-fx-background-color: #FEF4E6;
+                                      -fx-text-fill: #A0620A;
+                                      -fx-font-size: 9px;
+                                      -fx-font-weight: bold;
+                                      -fx-padding: 2 8;
+                                      -fx-background-radius: 20;"/>
+                        <Label text="Rédiger le contenu des réseaux sociaux"
+                               style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #1A1A2E;"/>
+                        <Label text="📅 Cette semaine  👤 Assigné à salma"
+                               style="-fx-font-size: 10px; -fx-text-fill: #6B6B80;"/>
+                    </VBox>
+
+                    <!-- Tâche terminée -->
+                    <VBox style="-fx-background-color: #FFFFFF;
+                                 -fx-background-radius: 8;
+                                 -fx-padding: 10;
+                                 -fx-border-color: #E8F5EE;
+                                 -fx-border-width: 0 0 0 3;
+                                 -fx-border-radius: 2;"
+                          spacing="4">
+                        <Label text="✅  Terminé"
+                               style="-fx-background-color: #E8F5EE;
+                                      -fx-text-fill: #1A6B40;
+                                      -fx-font-size: 9px;
+                                      -fx-font-weight: bold;
+                                      -fx-padding: 2 8;
+                                      -fx-background-radius: 20;"/>
+                        <Label text="Analyser les statistiques du mois"
+                               style="-fx-font-size: 12px;
+                                      -fx-font-weight: bold;
+                                      -fx-text-fill: #6B6B80;
+                                      -fx-strikethrough: true;"/>
+                        <Label text="✓ Complété par meryem"
+                               style="-fx-font-size: 10px; -fx-text-fill: #1A6B40;"/>
+                    </VBox>
+                </VBox>
+            </HBox>
+
+            <!-- ── SECTION FONCTIONNALITÉS ───────────────────── -->
+            <VBox fx:id="featuresSection"
+                  style="-fx-background-color: #FFFFFF;
+                         -fx-padding: 50 80 50 80;
+                         -fx-border-color: #E8E2D9;
+                         -fx-border-width: 1 0 1 0;"
+                  spacing="30">
+
+                <VBox spacing="6" alignment="CENTER">
+                    <Label text="Ce que vous pouvez faire"
+                           style="-fx-font-size: 10px; -fx-font-weight: bold;
+                                  -fx-text-fill: #7B2D42; -fx-padding: 4 12;
+                                  -fx-background-color: #FAE8EC;
+                                  -fx-background-radius: 20;"/>
+                    <Label text="Tout ce dont votre équipe a besoin"
+                           style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                    <Label text="Un outil complet pour gérer vos projets du début à la fin, sans effort."
+                           style="-fx-font-size: 13px; -fx-text-fill: #6B6B80;"/>
+                </VBox>
+
+                <HBox spacing="16" alignment="CENTER">
+
+                    <!-- Feature 1 -->
+                    <VBox spacing="10" alignment="TOP_LEFT"
+                          style="-fx-background-color: #F7F4EF;
+                                 -fx-border-color: #E8E2D9;
+                                 -fx-border-width: 1;
+                                 -fx-background-radius: 12;
+                                 -fx-border-radius: 12;
+                                 -fx-padding: 22;"
+                          prefWidth="190">
+                        <Label text="📋" style="-fx-font-size: 26px;"/>
+                        <Label text="Tableaux visuels"
+                               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                        <Label text="Organisez vos tâches en colonnes et visualisez l'avancement de vos projets."
+                               style="-fx-text-fill: #6B6B80; -fx-font-size: 11px; -fx-wrap-text: true;"/>
+                    </VBox>
+
+                    <!-- Feature 2 — mise en avant -->
+                    <VBox spacing="10" alignment="TOP_LEFT"
+                          style="-fx-background-color: #F7F4EF;
+                                 -fx-border-color: #1B3A5C;
+                                 -fx-border-width: 2;
+                                 -fx-background-radius: 12;
+                                 -fx-border-radius: 12;
+                                 -fx-padding: 22;"
+                          prefWidth="190">
+                        <Label text="⚡" style="-fx-font-size: 26px;"/>
+                        <Label text="Toujours à jour"
+                               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                        <Label text="Tout le monde voit les modifications en temps réel, sans recharger la page."
+                               style="-fx-text-fill: #6B6B80; -fx-font-size: 11px; -fx-wrap-text: true;"/>
+                    </VBox>
+
+                    <!-- Feature 3 -->
+                    <VBox spacing="10" alignment="TOP_LEFT"
+                          style="-fx-background-color: #F7F4EF;
+                                 -fx-border-color: #E8E2D9;
+                                 -fx-border-width: 1;
+                                 -fx-background-radius: 12;
+                                 -fx-border-radius: 12;
+                                 -fx-padding: 22;"
+                          prefWidth="190">
+                        <Label text="👥" style="-fx-font-size: 26px;"/>
+                        <Label text="Travail en équipe"
+                               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                        <Label text="Invitez vos collègues, assignez les tâches et commentez ensemble."
+                               style="-fx-text-fill: #6B6B80; -fx-font-size: 11px; -fx-wrap-text: true;"/>
+                    </VBox>
+
+                    <!-- Feature 4 -->
+                    <VBox spacing="10" alignment="TOP_LEFT"
+                          style="-fx-background-color: #F7F4EF;
+                                 -fx-border-color: #E8E2D9;
+                                 -fx-border-width: 1;
+                                 -fx-background-radius: 12;
+                                 -fx-border-radius: 12;
+                                 -fx-padding: 22;"
+                          prefWidth="190">
+                        <Label text="🔔" style="-fx-font-size: 26px;"/>
+                        <Label text="Rappels automatiques"
+                               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                        <Label text="Recevez un email quand une tâche vous est assignée ou approche de sa date limite."
+                               style="-fx-text-fill: #6B6B80; -fx-font-size: 11px; -fx-wrap-text: true;"/>
+                    </VBox>
+
+                    <!-- Feature 5 -->
+                    <VBox spacing="10" alignment="TOP_LEFT"
+                          style="-fx-background-color: #F7F4EF;
+                                 -fx-border-color: #E8E2D9;
+                                 -fx-border-width: 1;
+                                 -fx-background-radius: 12;
+                                 -fx-border-radius: 12;
+                                 -fx-padding: 22;"
+                          prefWidth="190">
+                        <Label text="🖱️" style="-fx-font-size: 26px;"/>
+                        <Label text="Glisser-déposer"
+                               style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                        <Label text="Faites glisser vos tâches d'une étape à l'autre en un seul geste."
+                               style="-fx-text-fill: #6B6B80; -fx-font-size: 11px; -fx-wrap-text: true;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- ── SECTION À PROPOS ──────────────────────────── -->
+            <VBox fx:id="aboutSection"
+                  style="-fx-background-color: #F7F4EF; -fx-padding: 50 80 50 80;"
+                  spacing="30">
+
+                <VBox spacing="6" alignment="CENTER">
+                    <Label text="À propos"
+                           style="-fx-font-size: 10px; -fx-font-weight: bold;
+                                  -fx-text-fill: #1B3A5C; -fx-padding: 4 12;
+                                  -fx-background-color: #EBF0F6;
+                                  -fx-background-radius: 20;"/>
+                    <Label text="Pourquoi choisir Kanban App ?"
+                           style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                    <Label text="Une application pensée pour être simple à utiliser, puissante et fiable."
+                           style="-fx-font-size: 13px; -fx-text-fill: #6B6B80;"/>
+                </VBox>
+
+                <HBox spacing="24" alignment="CENTER">
+
+                    <!-- Card 1 -->
+                    <VBox spacing="12" prefWidth="320"
+                          style="-fx-background-color: #FFFFFF;
+                                 -fx-background-radius: 12;
+                                 -fx-padding: 28;
+                                 -fx-border-color: #E8E2D9;
+                                 -fx-border-radius: 12;
+                                 -fx-border-width: 1;
+                                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 2);">
+                        <Label text="🚀  Démarrez en 2 minutes"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                        <Separator/>
+                        <Label text="Créez votre compte, ajoutez votre équipe et commencez à organiser vos projets immédiatement. Aucune formation requise."
+                               style="-fx-font-size: 12px; -fx-text-fill: #6B6B80; -fx-wrap-text: true; -fx-line-spacing: 3;"/>
+                    </VBox>
+
+                    <!-- Card 2 -->
+                    <VBox spacing="12" prefWidth="320"
+                          style="-fx-background-color: #FFFFFF;
+                                 -fx-background-radius: 12;
+                                 -fx-padding: 28;
+                                 -fx-border-color: #E8E2D9;
+                                 -fx-border-radius: 12;
+                                 -fx-border-width: 1;
+                                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 2);">
+                        <Label text="🔒  Vos données, en sécurité"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7B2D42;"/>
+                        <Separator/>
+                        <Label text="Chaque utilisateur accède uniquement à ses propres projets. Vos informations sont protégées et restent confidentielles."
+                               style="-fx-font-size: 12px; -fx-text-fill: #6B6B80; -fx-wrap-text: true; -fx-line-spacing: 3;"/>
+                    </VBox>
+
+                    <!-- Card 3 -->
+                    <VBox spacing="12" prefWidth="320"
+                          style="-fx-background-color: #FFFFFF;
+                                 -fx-background-radius: 12;
+                                 -fx-padding: 28;
+                                 -fx-border-color: #E8E2D9;
+                                 -fx-border-radius: 12;
+                                 -fx-border-width: 1;
+                                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6, 0, 0, 2);">
+                        <Label text="📬  Ne ratez plus rien"
+                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                        <Separator/>
+                        <Label text="Des notifications par email vous alertent automatiquement dès qu'une tâche vous est confiée ou qu'une deadline approche."
+                               style="-fx-font-size: 12px; -fx-text-fill: #6B6B80; -fx-wrap-text: true; -fx-line-spacing: 3;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- ── FOOTER ────────────────────────────────────── -->
+            <HBox alignment="CENTER_LEFT" spacing="0"
+                  style="-fx-background-color: #152D47;">
+                <VBox style="-fx-padding: 20 28;" HBox.hgrow="ALWAYS">
+                    <Label text="▦  Kanban App"
+                           style="-fx-text-fill: #FFFFFF; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Label text="© 2026 — Tous droits réservés"
+                           style="-fx-text-fill: #8BA5C0; -fx-font-size: 11px;"/>
+                </VBox>
+                <HBox spacing="20" style="-fx-padding: 20 28;">
+                    <Button text="Connexion" onAction="#handleLogin"
+                            style="-fx-background-color: transparent;
+                                   -fx-text-fill: #8BA5C0; -fx-font-size: 12px;
+                                   -fx-cursor: hand; -fx-padding: 0;"/>
+                    <Button text="Créer un compte" onAction="#handleRegister"
+                            style="-fx-background-color: transparent;
+                                   -fx-text-fill: #8BA5C0; -fx-font-size: 12px;
+                                   -fx-cursor: hand; -fx-padding: 0;"/>
+                </HBox>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+
+</VBox>

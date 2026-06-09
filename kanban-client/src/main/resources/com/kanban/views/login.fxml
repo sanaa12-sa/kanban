@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.LoginController"
+      prefWidth="900" prefHeight="620"
+      style="-fx-background-color: #F7F4EF;">
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- PANNEAU GAUCHE — Bleu marine                            -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <VBox alignment="CENTER" spacing="28"
+          style="-fx-background-color: #152D47;
+                 -fx-padding: 50 40;
+                 -fx-min-width: 360px;">
+
+        <Label text="▦"
+               style="-fx-text-fill: #FFFFFF; -fx-font-size: 40px;"/>
+
+        <VBox spacing="6" alignment="CENTER">
+            <Label text="Kanban App"
+                   style="-fx-text-fill: #FFFFFF;
+                          -fx-font-size: 24px;
+                          -fx-font-weight: bold;"/>
+            <Label text="Gestion de projets agile"
+                   style="-fx-text-fill: #8BA5C0;
+                          -fx-font-size: 13px;"/>
+        </VBox>
+
+        <Separator style="-fx-background-color: #1F3F5E;"/>
+
+        <VBox spacing="16">
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="📋"
+                       style="-fx-font-size: 18px;"/>
+                <VBox spacing="2">
+                    <Label text="Boards Kanban"
+                           style="-fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <Label text="Organisez vos projets en colonnes"
+                           style="-fx-text-fill: #8BA5C0; -fx-font-size: 11px;"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="⚡"
+                       style="-fx-font-size: 18px;"/>
+                <VBox spacing="2">
+                    <Label text="Temps Réel"
+                           style="-fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <Label text="Synchronisation instantanée"
+                           style="-fx-text-fill: #8BA5C0; -fx-font-size: 11px;"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="🔔"
+                       style="-fx-font-size: 18px;"/>
+                <VBox spacing="2">
+                    <Label text="Notifications Email"
+                           style="-fx-text-fill: #FFFFFF; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <Label text="Rappels automatiques de deadlines"
+                           style="-fx-text-fill: #8BA5C0; -fx-font-size: 11px;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+
+    </VBox>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- PANNEAU DROIT — Formulaire                              -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <VBox alignment="CENTER" HBox.hgrow="ALWAYS"
+          style="-fx-padding: 50 60;">
+
+        <VBox spacing="20" maxWidth="360">
+
+            <!-- Titre -->
+            <VBox spacing="4">
+                <Label text="Bon retour 👋"
+                       style="-fx-font-size: 26px;
+                              -fx-font-weight: bold;
+                              -fx-text-fill: #1B3A5C;"/>
+                <Label text="Connectez-vous à votre compte"
+                       style="-fx-text-fill: #6B6B80; -fx-font-size: 13px;"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Email -->
+            <VBox spacing="5">
+                <Label text="Adresse email"
+                       style="-fx-text-fill: #1B3A5C;
+                              -fx-font-size: 12px;
+                              -fx-font-weight: bold;"/>
+                <TextField fx:id="emailField"
+                           promptText="ex : sanaa@exemple.com"
+                           maxWidth="Infinity"/>
+            </VBox>
+
+            <!-- Mot de passe -->
+            <VBox spacing="5">
+                <Label text="Mot de passe"
+                       style="-fx-text-fill: #1B3A5C;
+                              -fx-font-size: 12px;
+                              -fx-font-weight: bold;"/>
+                <PasswordField fx:id="passwordField"
+                               promptText="Votre mot de passe"
+                               maxWidth="Infinity"/>
+            </VBox>
+
+            <!-- Message erreur/succès -->
+            <Label fx:id="errorLabel" text=""
+                   style="-fx-font-size: 12px;
+                          -fx-font-weight: bold;
+                          -fx-wrap-text: true;"/>
+
+            <!-- Boutons -->
+            <VBox spacing="10">
+                <Button text="Se connecter"
+                        onAction="#handleLogin"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #1B3A5C;
+                               -fx-text-fill: #FFFFFF;
+                               -fx-font-weight: bold;
+                               -fx-font-size: 14px;
+                               -fx-padding: 13px;
+                               -fx-background-radius: 8px;
+                               -fx-cursor: hand;
+                               -fx-effect: dropshadow(gaussian, rgba(27,58,92,0.3), 6, 0, 0, 2);"/>
+                <Button text="Pas encore de compte ? S'inscrire"
+                        onAction="#handleRegister"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: transparent;
+                               -fx-text-fill: #1B3A5C;
+                               -fx-border-color: #1B3A5C;
+                               -fx-border-radius: 8px;
+                               -fx-background-radius: 8px;
+                               -fx-font-size: 13px;
+                               -fx-padding: 12px;
+                               -fx-cursor: hand;"/>
+            </VBox>
+
+            <!-- Footer discret -->
+            <Label text="© 2026 Kanban App"
+                   style="-fx-text-fill: #C0B8B0;
+                          -fx-font-size: 10px;"
+                   alignment="CENTER"
+                   maxWidth="Infinity"/>
+
+        </VBox>
+    </VBox>
+
+</HBox>

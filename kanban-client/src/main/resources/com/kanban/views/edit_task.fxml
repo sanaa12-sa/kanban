@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.kanban.controller.EditTaskController"
+      style="-fx-background-color: #1e1e2e;
+             -fx-padding: 20;
+             -fx-background-radius: 15;">
+
+    <Label text="✏️ Modifier la tâche"
+           style="-fx-font-size: 20px;
+                  -fx-font-weight: bold;
+                  -fx-text-fill: white;" />
+
+    <TextField fx:id="titleField"
+               promptText="Titre de la tâche" />
+
+    <TextArea fx:id="descriptionField"
+              promptText="Description"
+              prefHeight="100" />
+
+    <ComboBox fx:id="priorityBox"
+              prefWidth="250" />
+
+    <TextField fx:id="deadlineField"
+               promptText="Deadline (YYYY-MM-DD)" />
+
+    <TextField fx:id="assignedToField"
+               promptText="ID utilisateur assigné" />
+
+    <Label fx:id="errorLabel"
+           style="-fx-text-fill: #f38ba8;" />
+
+    <HBox spacing="10">
+        <Button text="💾 Sauvegarder"
+                onAction="#handleSave"
+                style="-fx-background-color: #89b4fa;
+                       -fx-text-fill: black;
+                       -fx-font-weight: bold;" />
+
+        <Button text="❌ Annuler"
+                onAction="#handleCancel"
+                style="-fx-background-color: #313244;
+                       -fx-text-fill: white;" />
+    </HBox>
+
+</VBox>

@@ -1,0 +1,37 @@
+# ══════════════════════════════════════════════════════════════
+# Prometheus Configuration — Kanban App
+# ══════════════════════════════════════════════════════════════
+
+global:
+  # Intervalle de collecte des métriques
+  scrape_interval: 15s
+  # Timeout pour chaque collecte
+  scrape_timeout: 10s
+  # Intervalle d'évaluation des règles d'alerte
+  evaluation_interval: 15s
+
+  # ── Labels globaux ──────────────────────────────────────────────
+  external_labels:
+    project: 'kanban-app'
+    environment: 'production'
+
+# ── Jobs de collecte ────────────────────────────────────────────
+scrape_configs:
+
+  # Prometheus se surveille lui-même
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Serveur Kanban (métriques JVM via Micrometer)
+  - job_name: 'kanban-server'
+    static_configs:
+      - targets: ['localhost:8080']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 10s
+
+  # MySQL Exporter (optionnel)
+  - job_name: 'mysql'
+    static_configs:
+      - targets: ['localhost:9104']
+    scrape_interval: 30s

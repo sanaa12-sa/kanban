@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.kanban.controller.RegisterController"
+      prefWidth="900" prefHeight="650"
+      style="-fx-background-color: #F7F4EF;">
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- PANNEAU GAUCHE — Bleu marine décoratif                  -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <VBox alignment="CENTER" spacing="24"
+          style="-fx-background-color: #152D47;
+                 -fx-padding: 50 40;
+                 -fx-min-width: 360px;"
+          HBox.hgrow="NEVER">
+
+        <Label text="▦" style="-fx-text-fill: #FFFFFF; -fx-font-size: 36px;"/>
+        <Label text="Kanban App"
+               style="-fx-text-fill: #FFFFFF; -fx-font-size: 22px; -fx-font-weight: bold;"/>
+        <Label text="Rejoignez des milliers d'équipes qui organisent leurs projets avec efficacité."
+               style="-fx-text-fill: #8BA5C0; -fx-font-size: 13px;
+                      -fx-text-alignment: center; -fx-wrap-text: true;"
+               maxWidth="260"/>
+
+        <Separator style="-fx-background-color: #1F3F5E;"/>
+
+        <!-- Points forts -->
+        <VBox spacing="12">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="✓"
+                       style="-fx-text-fill: #FFFFFF; -fx-background-color: #2C5F8A;
+                              -fx-background-radius: 50%; -fx-padding: 2 6;
+                              -fx-font-size: 11px; -fx-font-weight: bold;"/>
+                <Label text="Boards Kanban illimités"
+                       style="-fx-text-fill: #C8D8E8; -fx-font-size: 12px;"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="✓"
+                       style="-fx-text-fill: #FFFFFF; -fx-background-color: #2C5F8A;
+                              -fx-background-radius: 50%; -fx-padding: 2 6;
+                              -fx-font-size: 11px; -fx-font-weight: bold;"/>
+                <Label text="Collaboration en temps réel"
+                       style="-fx-text-fill: #C8D8E8; -fx-font-size: 12px;"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="✓"
+                       style="-fx-text-fill: #FFFFFF; -fx-background-color: #2C5F8A;
+                              -fx-background-radius: 50%; -fx-padding: 2 6;
+                              -fx-font-size: 11px; -fx-font-weight: bold;"/>
+                <Label text="Notifications email automatiques"
+                       style="-fx-text-fill: #C8D8E8; -fx-font-size: 12px;"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="✓"
+                       style="-fx-text-fill: #FFFFFF; -fx-background-color: #2C5F8A;
+                              -fx-background-radius: 50%; -fx-padding: 2 6;
+                              -fx-font-size: 11px; -fx-font-weight: bold;"/>
+                <Label text="100% gratuit"
+                       style="-fx-text-fill: #C8D8E8; -fx-font-size: 12px;"/>
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- PANNEAU DROIT — Formulaire                              -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <VBox alignment="CENTER" HBox.hgrow="ALWAYS"
+          style="-fx-padding: 50 60;">
+
+        <VBox spacing="20" maxWidth="380">
+
+            <!-- Titre -->
+            <VBox spacing="4">
+                <Label text="Créer un compte"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1B3A5C;"/>
+                <Label text="Remplissez les informations ci-dessous"
+                       style="-fx-text-fill: #6B6B80; -fx-font-size: 13px;"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Nom complet -->
+            <VBox spacing="5">
+                <Label text="Nom complet *"
+                       style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+                <TextField fx:id="fullNameField"
+                           promptText="ex : sanaa faniri"
+                           maxWidth="Infinity"/>
+            </VBox>
+
+            <!-- Email -->
+            <VBox spacing="5">
+                <Label text="Adresse email *"
+                       style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+                <TextField fx:id="emailField"
+                           promptText="ex : sanaa@exemple.com"
+                           maxWidth="Infinity"/>
+                <!-- Validation email en temps réel -->
+                <Label fx:id="emailValidationLabel" text=""
+                       style="-fx-font-size: 11px; -fx-text-fill: #7B2D42;"/>
+            </VBox>
+
+            <!-- Mot de passe -->
+            <VBox spacing="5">
+                <Label text="Mot de passe *"
+                       style="-fx-text-fill: #1B3A5C; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="passwordField"
+                               promptText="Minimum 8 caractères"
+                               maxWidth="Infinity"/>
+                <!-- Indicateur de force -->
+                <HBox spacing="4" alignment="CENTER_LEFT">
+                    <Label fx:id="strengthBar1" text="█"
+                           style="-fx-text-fill: #E8E2D9; -fx-font-size: 8px;"/>
+                    <Label fx:id="strengthBar2" text="█"
+                           style="-fx-text-fill: #E8E2D9; -fx-font-size: 8px;"/>
+                    <Label fx:id="strengthBar3" text="█"
+                           style="-fx-text-fill: #E8E2D9; -fx-font-size: 8px;"/>
+                    <Label fx:id="passwordStrengthLabel" text="Entrez un mot de passe"
+                           style="-fx-text-fill: #6B6B80; -fx-font-size: 11px;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Message d'erreur global -->
+            <Label fx:id="errorLabel" text=""
+                   style="-fx-text-fill: #7B2D42; -fx-font-size: 12px;
+                          -fx-font-weight: bold; -fx-wrap-text: true;"/>
+
+            <!-- Boutons -->
+            <VBox spacing="10">
+                <Button text="Créer mon compte"
+                        onAction="#handleRegister"
+                        styleClass="btn-primary"
+                        maxWidth="Infinity"
+                        style="-fx-font-size: 14px; -fx-padding: 13px;"/>
+                <Button text="J'ai déjà un compte — Se connecter"
+                        onAction="#handleBack"
+                        styleClass="btn-secondary"
+                        maxWidth="Infinity"
+                        style="-fx-font-size: 13px;"/>
+            </VBox>
+
+        </VBox>
+    </VBox>
+
+</HBox>
