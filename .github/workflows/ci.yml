@@ -10,6 +10,20 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: kanban_db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,6 +40,12 @@ jobs:
 
       - name: Run tests
         run: mvn test -f kanban-server/pom.xml
+        env:
+          DB_HOST: localhost
+          DB_PORT: 3306
+          DB_NAME: kanban_db
+          DB_USER: root
+          DB_PASSWORD: root
 
       - name: Upload test reports
         uses: actions/upload-artifact@v4
