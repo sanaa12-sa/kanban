@@ -14,7 +14,7 @@ public class ServerConnection {
     private PrintWriter    out;
 
     private static final String HOST = "localhost";
-    private static final int    PORT = 5008;
+    private static final int    PORT = 5009;
 
     private ServerConnection() throws IOException {
         socket = new Socket(HOST, PORT);

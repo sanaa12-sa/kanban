@@ -5,27 +5,19 @@
 <hibernate-configuration>
     <session-factory>
 
-        <!-- ── Driver ── -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
-        <!-- ── URL ── -->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/kanban_db?serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false</property>
-
-        <!-- ── Credentials ── -->
+        <property name="hibernate.connection.url">jdbc:mysql://mysql:3306/kanban_db?serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
 
-        <!-- ── Dialect ── -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-        <!-- ── DDL ── -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- ── Logs ── -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <!-- ── Entités ── -->
         <mapping class="com.kanban.model.User"/>
         <mapping class="com.kanban.model.Board"/>
         <mapping class="com.kanban.model.BoardColumn"/>
