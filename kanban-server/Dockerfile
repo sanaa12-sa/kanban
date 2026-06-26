@@ -13,5 +13,5 @@ RUN mvn clean package -DskipTests -o || mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=builder /app/target/kanban-server-1.0-SNAPSHOT.jar app.jar
-EXPOSE 5000
+EXPOSE 5009 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

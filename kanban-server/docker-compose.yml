@@ -20,7 +20,7 @@ services:
     image: kanban-server:latest
     container_name: kanban-server
     ports:
-      - "5008:5008"
+      - "5009:5009"
       - "8080:8080"
     depends_on:
       mysql:
